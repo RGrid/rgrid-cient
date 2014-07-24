@@ -1,4 +1,3 @@
-require "string"
 require "retentiongrid/version"
 require "retentiongrid/api"
 require "retentiongrid/order"
