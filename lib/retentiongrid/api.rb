@@ -13,7 +13,7 @@ module Retentiongrid
 
     # base_uri 'https://app.retentiongrid.com/api'
     base_uri 'http://retentiongrid.apiary-mock.com'
-    logger  ::Logger.new("httparty.log"), :debug, :curl
+    logger  ::Logger.new("log/httparty.log"), :debug, :curl
 
     def initialize(api_key)
       self.class.default_params token: api_key
