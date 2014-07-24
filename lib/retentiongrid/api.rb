@@ -18,12 +18,5 @@ module Retentiongrid
     def initialize(api_key)
       self.class.default_params token: api_key
     end
-
-    # query params that filter the posts are:
-    #   id (required). Filter by this id.
-    def order(id, options={})
-      res = self.class.get("/orders/#{id}")
-      Order.new(res.parsed_response)
-    end
   end
 end

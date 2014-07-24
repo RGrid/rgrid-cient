@@ -16,19 +16,25 @@ module Retentiongrid
       @order_created_at = Time.parse(order_created_at) unless order_created_at.nil?
     end
 
+    def self.find(order_id)
+      result = Api.get("/orders/#{order_id}")
+      Order.new(result.parsed_response)
+    end
+
+    def save
+      result = Api.post("/orders/#{order_id}", attributes)
+      Order.new(result.parsed_response)
+    end
+
+    def destroy
+      res = Api.delete("/orders/#{order_id}")
+    end
+
     def attributes
       ATTRIBUTES_NAMES.inject({}) do |attribs, attrib_name|
         attribs[attrib_name] = self.send(attrib_name)
         attribs
       end
-    end
-
-    def save
-      res = Api.post("/orders/#{order_id}", attributes)
-    end
-
-    def destroy
-      res = Api.delete("/orders/#{order_id}")
     end
 
   end
