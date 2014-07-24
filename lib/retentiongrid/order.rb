@@ -3,7 +3,7 @@ module Retentiongrid
 
     ATTRIBUTES_NAMES = [  :order_id, :customer_id, :status, :total_price, :total_discounts,
                           :currency, :canceled_shiped, :canceled_shop_fault, :order_created_at
-                       ]
+                       ].freeze
 
     ATTRIBUTES_NAMES.each do |attrib|
       attr_accessor attrib
