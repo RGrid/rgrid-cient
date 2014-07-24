@@ -22,7 +22,8 @@ module Retentiongrid
     # query params that filter the posts are:
     #   id (required). Filter by this id.
     def order(id, options={})
-      self.class.get("/orders/#{id}")
+      res = self.class.get("/orders/#{id}")
+      Order.new(res.parsed_response)
     end
   end
 end
