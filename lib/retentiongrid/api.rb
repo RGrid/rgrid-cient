@@ -6,8 +6,8 @@ module Retentiongrid
   #
   # Usage:
   #   require 'retentiongrid'
-  #   api = Retentiongrid::Api.new
-  #   @order = api.order(1234)
+  #   api = Retentiongrid::Api.api_key = "api_key"
+  #   order = Retentiongrid::Order.find(1234)
   class Api
     include HTTParty
 
@@ -15,8 +15,8 @@ module Retentiongrid
     base_uri 'http://retentiongrid.apiary-mock.com'
     logger  ::Logger.new("log/httparty.log"), :debug, :curl
 
-    def initialize(api_key)
-      self.class.default_params token: api_key
+    def self.api_key=(api_key)
+      default_params token: api_key
     end
   end
 end
