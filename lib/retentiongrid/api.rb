@@ -11,8 +11,7 @@ module Retentiongrid
   class Api
     include HTTParty
 
-    # base_uri 'https://app.retentiongrid.com/api'
-    base_uri 'http://retentiongrid.apiary-mock.com'
+    base_uri 'https://app.retentiongrid.com/api'
     logger  ::Logger.new("log/httparty.log"), :debug, :curl
 
     def self.api_key=(api_key)

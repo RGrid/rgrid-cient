@@ -12,3 +12,6 @@ RSpec.configure do |config|
 end
 
 FactoryGirl.find_definitions
+
+# HTTP requests are disabled, but make sure the mocking url is being used in test mode
+Retentiongrid::Api::base_uri 'http://retentiongrid.apiary-mock.com'
