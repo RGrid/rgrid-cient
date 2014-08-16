@@ -6,10 +6,6 @@ RSpec.describe Order do
     FactoryGirl.build(:customer)
   end
 
-  let! :stub_customer_lookup do
-    stub_request(:get, "http://retentiongrid.apiary-mock.com/customers/#{customer.customer_id}").to_return(:status => 200, :body => "", :headers => {'Content-Type' => 'application/xml'} )
-  end
-
   subject do
     FactoryGirl.build(:order, customer: customer)
   end
