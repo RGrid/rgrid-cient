@@ -43,8 +43,12 @@ module Retentiongrid
     # @param [Fixnum] order_id the order id to be found
     # @return [Order] if found any
     def self.find(order_id)
-      result = Api.get("/orders/#{order_id}")
-      new(result.parsed_response)
+      begin
+        result = Api.get("/orders/#{order_id}")
+        new(result.parsed_response)
+      rescue NotFound
+        nil
+      end
     end
 
     def save

@@ -24,8 +24,12 @@ module Retentiongrid
     # @param [Fixnum] customer_id the customer id to be found
     # @return [Customer] if found any
     def self.find(customer_id)
-      result = Api.get("/customers/#{customer_id}")
-      new(result.parsed_response)
+      begin
+        result = Api.get("/customers/#{customer_id}")
+        new(result.parsed_response)
+      rescue NotFound
+        nil
+      end
     end
 
 
