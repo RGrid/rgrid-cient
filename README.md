@@ -18,7 +18,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    require 'retentiongrid'
+    Retentiongrid::Api.api_key = "your_api_key"
+    order = Retentiongrid::Order.find(1234)
 
 ## Contributing
 
