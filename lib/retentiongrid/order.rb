@@ -44,7 +44,7 @@ module Retentiongrid
     # @return [Order] if found any
     def self.find(order_id)
       result = Api.get("/orders/#{order_id}")
-      Order.new(result.parsed_response)
+      new(result.parsed_response)
     end
 
     def save
