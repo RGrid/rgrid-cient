@@ -17,9 +17,17 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "httparty", "0.13.1"
+  spec.add_dependency 'httparty', '0.13.1'
+  spec.add_dependency 'activemodel', '>=3.2.0'
 
 
-  spec.add_development_dependency "bundler", "~> 1.6"
-  spec.add_development_dependency "rake"
+  spec.add_development_dependency 'bundler', '~> 1.6'
+  spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'yard'
+
+  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'shoulda-matchers'
+  spec.add_development_dependency 'webmock'
+  spec.add_development_dependency 'factory_girl'
+
 end

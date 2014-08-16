@@ -1,5 +1,14 @@
 module Retentiongrid
+  # Retentiongrid Order
+  #
+  # To create a new Retentiongrid::Order object:
+  #   order = Retention::Order.new(:id => "123", :lat => "52.2", :lon => "13.4", :changeset => "12", :user => "fred", :uid => "123", :visible => true, :timestamp => "2005-07-30T14:27:12+01:00")
+  #
+  # To get a order from the API:
+  #   order = Retention::Order.find(17)
+  #
   class Order
+    include ActiveModel::Validations
 
     ATTRIBUTES_NAMES = [  :order_id, :customer_id, :status, :total_price, :total_discounts,
                           :currency, :canceled_shiped, :canceled_shop_fault, :order_created_at
@@ -9,6 +18,8 @@ module Retentiongrid
       attr_accessor attrib
     end
 
+    validates :order_id, :customer_id, :currency, :total_price, :order_created_at, presence: true
+
     def initialize(attribs={})
       attribs.each do |attrib, value|
         self.send("#{attrib}=", value)
@@ -16,6 +27,22 @@ module Retentiongrid
       @order_created_at = Time.parse(order_created_at) unless order_created_at.nil?
     end
 
+
+    # relations
+
+    def customer=(customer)
+      self.customer_id = customer.customer_id
+    end
+
+    def customer()
+      Customer.find(customer_id)
+    end
+
+    # API Stuff here
+
+    # Find an order with given id
+    # @param [Fixnum] order_id the order id to be found
+    # @return [Order] if found any
     def self.find(order_id)
       result = Api.get("/orders/#{order_id}")
       Order.new(result.parsed_response)

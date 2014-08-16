@@ -1,7 +1,6 @@
 # Retention::Grid
 
 A ruby client for retentiongrid.com API
-TODO: Write a gem description
 
 ## Installation
 

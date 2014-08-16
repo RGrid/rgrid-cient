@@ -6,7 +6,7 @@ module Retentiongrid
   #
   # Usage:
   #   require 'retentiongrid'
-  #   api = Retentiongrid::Api.api_key = "api_key"
+  #   Retentiongrid::Api.api_key = "api_key"
   #   order = Retentiongrid::Order.find(1234)
   class Api
     include HTTParty
