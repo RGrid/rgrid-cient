@@ -11,6 +11,10 @@ module Retentiongrid
   class Api
     include HTTParty
 
+    # Test
+    # base_uri 'http://retentiongrid.apiary-mock.com'
+
+    # Production
     base_uri 'https://app.retentiongrid.com/api'
     headers 'Content-type' => 'application/json'
     logger  ::Logger.new("log/httparty.log"), :debug, :curl
