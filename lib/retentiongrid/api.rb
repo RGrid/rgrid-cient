@@ -39,7 +39,7 @@ module Retentiongrid
     def self.check_response_codes(response)
       body = response.body
       case response.code.to_i
-      when 200 then return response
+      when 200..299 then return response
       when 400 then raise BadRequest.new(body)
       when 401 then raise Unauthorized.new(body)
       when 403 then raise Forbidden.new(body)
