@@ -27,7 +27,7 @@ module Retentiongrid
       end
 
       def get_with_response_check(*args)
-        check_response_codes(*args))
+        check_response_codes(get_without_response_check(*args))
       end
       alias_method_chain :get, :response_check
 
