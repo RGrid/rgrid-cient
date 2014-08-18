@@ -26,7 +26,7 @@ module Retentiongrid
     def self.find(customer_id)
       begin
         result = Api.get("/customers/#{customer_id}")
-        new(result.parsed_response)
+        new(result.parsed_response["rg_customer"])
       rescue NotFound
         nil
       end
@@ -35,8 +35,8 @@ module Retentiongrid
 
 
     def save
-      result = Api.post("/customers/#{customer_id}", attributes)
-      Customer.new(result.parsed_response)
+      result = Api.post("/customers/#{customer_id}", body: attributes.to_json, headers: { 'Content-type' => 'application/json' })
+      Customer.new(result.parsed_response["rg_customer"])
     end
 
     def save!

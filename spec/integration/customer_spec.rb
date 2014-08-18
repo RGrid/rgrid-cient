@@ -8,17 +8,18 @@ RSpec.describe Customer do
 
   def valid_customer
     <<-EOF
-    {
-      "customer_id": "C123",
-      "first_name": "John",
-      "full_name": "John Smith",
-      "email": "john.smith@example.com",
-      "country": "DE",
-      "city": "Berlin",
-      "state": "Berlin",
-      "postal_code": "10437",
-      "tags": "wholesale",
-      "accepts_email_marketing": "true"
+    { "rg_customer":
+      { "customer_id": "C123",
+        "first_name": "John",
+        "full_name": "John Smith",
+        "email": "john.smith@example.com",
+        "country": "DE",
+        "city": "Berlin",
+        "state": "Berlin",
+        "postal_code": "10437",
+        "tags": "wholesale",
+        "accepts_email_marketing": "true"
+      }
     }
     EOF
   end

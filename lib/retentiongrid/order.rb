@@ -45,15 +45,16 @@ module Retentiongrid
     def self.find(order_id)
       begin
         result = Api.get("/orders/#{order_id}")
-        new(result.parsed_response)
+        new(result.parsed_response["rg_order"])
       rescue NotFound
         nil
       end
     end
 
     def save
-      result = Api.post("/orders/#{order_id}", attributes)
-      Order.new(result.parsed_response)
+      result = Api.post("/orders/#{order_id}", { body: attributes.to_json, headers: { 'Content-type' => 'application/json' } })
+      puts result.inspect
+      Order.new(result.parsed_response["rg_order"])
     end
 
     def destroy

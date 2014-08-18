@@ -8,16 +8,17 @@ RSpec.describe Order do
 
   def valid_order
     <<-EOF
-    {
-      "order_id": "A123",
-      "customer_id": "C123",
-      "status": "ok",
-      "total_price": 12.00,
-      "total_discounts": 1.00,
-      "currency": "EUR",
-      "canceled_shipped": false,
-      "canceled_shop_fault": false,
-      "order_created_at": "2014-03-12 13:35:10"
+    { "rg_order":
+      { "order_id": "A123",
+        "customer_id": "C123",
+        "status": "ok",
+        "total_price": 12.00,
+        "total_discounts": 1.00,
+        "currency": "EUR",
+        "canceled_shipped": false,
+        "canceled_shop_fault": false,
+        "order_created_at": "2014-03-12 13:35:10"
+      }
     }
     EOF
   end
