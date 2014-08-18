@@ -22,13 +22,13 @@ module Retentiongrid
         default_params token: api_key
       end
 
-      def get_with_response_check(path, options={}, &block)
-        check_response_codes(get_without_response_check(path, options={}, &block))
+      def get_with_response_check(*args)
+        check_response_codes(*args))
       end
       alias_method_chain :get, :response_check
 
-      def post_with_response_check(path, options={}, &block)
-        check_response_codes(post_without_response_check(path, options={}, &block))
+      def post_with_response_check(*args)
+        check_response_codes(post_without_response_check(*args))
       end
       alias_method_chain :post, :response_check
 
