@@ -36,6 +36,7 @@ module Retentiongrid
       when 404 then raise NotFound.new(body)
       when 405 then raise MethodNotAllowed.new(body)
       when 410 then raise Gone.new(body)
+      when 422 then raise UnprocessableEntity.new(body)
       when 500 then raise ServerError, 'Internal Server Error'
       when 503 then raise Unavailable, 'Service Unavailable'
       else raise "Unknown response code: #{response.code}"

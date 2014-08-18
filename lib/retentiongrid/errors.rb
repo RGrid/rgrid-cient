@@ -27,6 +27,9 @@ module Retentiongrid
   # that the object existed at some point, but was deleted.
   class Gone < HTTParty::Error; end # 410
 
+  # The request was well-formed but was unable to be followed due to semantic errors.
+  class UnprocessableEntity < HTTParty::Error; end # 422
+
   # Unspecified API server error.
   class ServerError < HTTParty::Error; end # 500
 
