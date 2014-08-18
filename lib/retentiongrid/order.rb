@@ -63,7 +63,8 @@ module Retentiongrid
 
     def attributes
       ATTRIBUTES_NAMES.inject({}) do |attribs, attrib_name|
-        attribs[attrib_name] = self.send(attrib_name)
+        value = self.send(attrib_name)
+        attribs[attrib_name] = value unless value.nil?
         attribs
       end
     end
