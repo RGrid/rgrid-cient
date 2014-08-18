@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Christoph Bünte"]
   spec.email         = ["info@christophbuente.de"]
   spec.summary       = "A ruby client for retentiongrid.com API."
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/christoph-buente/retentiongrid"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
