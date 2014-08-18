@@ -14,14 +14,23 @@ module Retentiongrid
     base_uri 'https://app.retentiongrid.com/api'
     logger  ::Logger.new("log/httparty.log"), :debug, :curl
 
-    def self.api_key=(api_key)
-      default_params token: api_key
-    end
 
-    def self.get(path, options={}, &block)
-      response = super(path, options={}, &block)
-      check_response_codes(response)
-      response
+    class << self
+
+      def api_key=(api_key)
+        default_params token: api_key
+      end
+
+      def get_with_response_check(path, options={}, &block)
+        check_response_codes(get_without_response_check(path, options={}, &block))
+      end
+      alias_method_chain :get, :response_check
+
+      def post_with_response_check(path, options={}, &block)
+        check_response_codes(post_without_response_check(path, options={}, &block))
+      end
+      alias_method_chain :post, :response_check
+
     end
 
     private
@@ -29,7 +38,7 @@ module Retentiongrid
     def self.check_response_codes(response)
       body = response.body
       case response.code.to_i
-      when 200 then return
+      when 200 then return response
       when 400 then raise BadRequest.new(body)
       when 401 then raise Unauthorized.new(body)
       when 403 then raise Forbidden.new(body)
