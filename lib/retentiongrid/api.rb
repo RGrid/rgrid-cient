@@ -12,6 +12,7 @@ module Retentiongrid
     include HTTParty
 
     base_uri 'https://app.retentiongrid.com/api'
+    headers 'Accept' => 'application/json'
     logger  ::Logger.new("log/httparty.log"), :debug, :curl
 
 

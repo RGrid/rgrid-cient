@@ -52,7 +52,7 @@ module Retentiongrid
     end
 
     def save
-      result = Api.post("/orders/#{order_id}", { body: attributes.to_json, headers: { 'Content-type' => 'application/json' } })
+      result = Api.post("/orders/#{order_id}", { body: attributes.to_json })
       puts result.inspect
       Order.new(result.parsed_response["rg_order"])
     end

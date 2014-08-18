@@ -35,7 +35,7 @@ module Retentiongrid
 
 
     def save
-      result = Api.post("/customers/#{customer_id}", body: attributes.to_json, headers: { 'Content-type' => 'application/json' })
+      result = Api.post("/customers/#{customer_id}", body: attributes.to_json)
       Customer.new(result.parsed_response["rg_customer"])
     end
 
