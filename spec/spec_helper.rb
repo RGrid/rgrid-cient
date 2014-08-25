@@ -4,6 +4,8 @@ require 'retentiongrid'
 require 'shoulda/matchers'
 
 require 'rspec'
+require 'coveralls'
+Coveralls.wear!
 
 RSpec.configure do |config|
 

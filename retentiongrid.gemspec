@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Christoph Bünte"]
   spec.email         = ["info@christophbuente.de"]
   spec.summary       = "A ruby client for retentiongrid.com API."
-  spec.homepage      = "https://github.com/christoph-buente/retentiongrid"
+  spec.homepage      = "http://retentiongrid.com/"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -29,5 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'shoulda-matchers'
   spec.add_development_dependency 'webmock'
   spec.add_development_dependency 'factory_girl'
+
+  spec.add_development_dependency 'coveralls'
 
 end
