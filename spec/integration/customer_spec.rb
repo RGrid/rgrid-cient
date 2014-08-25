@@ -48,6 +48,18 @@ RSpec.describe Customer do
   end
 
   context '#delete' do
+
+    subject do
+      FactoryGirl.build(:customer)
+    end
+
+    before :each do
+      stub_request(:delete, "http://retentiongrid.apiary-mock.com/customers/#{subject.customer_id}").to_return(:status => 204, :body => '')
+    end
+
+    it "should send delete to API" do
+      expect(subject.destroy).to eql true
+    end
   end
 
 end

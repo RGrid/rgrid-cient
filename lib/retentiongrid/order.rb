@@ -68,7 +68,8 @@ module Retentiongrid
     # Delete this order at retention grid
     # @return [Boolean] successfully deleted?
     def destroy
-      res = Api.delete("/orders/#{order_id}")
+      Api.delete("/orders/#{order_id}")
+      true
     end
 
     # Return all attributes as a hash

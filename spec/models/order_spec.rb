@@ -20,7 +20,7 @@ RSpec.describe Order do
   end
 
   it "makes sure the order id is populated" do
-    expect(subject.order_id).to eql 1
+    expect(subject.order_id).not_to eql nil
   end
 
 end
