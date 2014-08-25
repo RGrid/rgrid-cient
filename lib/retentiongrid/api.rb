@@ -36,6 +36,11 @@ module Retentiongrid
       end
       alias_method_chain :post, :response_check
 
+      def delete_with_response_check(*args)
+        check_response_codes(delete_without_response_check(*args))
+      end
+      alias_method_chain :delete, :response_check
+
     end
 
     private

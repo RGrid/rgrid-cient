@@ -43,8 +43,12 @@ module Retentiongrid
       !!save
     end
 
+
+    # Delete this customer at retention grid
+    # @param [Fixnum] customer_id the customer id to be deleted
     def destroy
-      res = Api.delete("/customers/#{customer_id}")
+      Api.delete("/customers/#{customer_id}")
+      true
     end
 
     def attributes
