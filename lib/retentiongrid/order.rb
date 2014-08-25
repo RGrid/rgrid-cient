@@ -2,14 +2,15 @@ module Retentiongrid
   # Retentiongrid Order
   #
   # To create a new Retentiongrid::Order object:
-  #   order = Retention::Order.new(:id => "123", :lat => "52.2", :lon => "13.4", :changeset => "12", :user => "fred", :uid => "123", :visible => true, :timestamp => "2005-07-30T14:27:12+01:00")
+  #   order = Retentiongrid::Order.new(order_id: "A123", customer_id: 'C123', currency: 'EUR', total_price: 12.00, order_created_at: Time.now).save
   #
   # To get a order from the API:
-  #   order = Retention::Order.find(17)
+  #   order = Retentiongrid::Order.find('A123')
   #
   class Order
     include ActiveModel::Validations
 
+    # The set of attributes defined by the API documentation
     ATTRIBUTES_NAMES = [  :order_id, :customer_id, :status, :total_price, :total_discounts,
                           :currency, :canceled_shipped, :canceled_shop_fault, :order_created_at
                        ].freeze
@@ -28,7 +29,6 @@ module Retentiongrid
       end
       @order_created_at = Time.parse(order_created_at) unless order_created_at.nil?
     end
-
 
     # relations
 
@@ -51,15 +51,28 @@ module Retentiongrid
       end
     end
 
+    # Create or update an order with given id
+    # @return [Boolean] successfully created or updated?
     def save
+      !!(save!) rescue false
+    end
+
+    # Create or update an order with given id
+    # @return [Order] if successfully created or updated
+    # @raise [Httparty::Error] for all sorts of HTTP statuses.
+    def save!
       result = Api.post("/orders/#{order_id}", { body: attributes.to_json })
       Order.new(result.parsed_response["rg_order"])
     end
 
+    # Delete this order at retention grid
+    # @return [Boolean] successfully deleted?
     def destroy
       res = Api.delete("/orders/#{order_id}")
     end
 
+    # Return all attributes as a hash
+    # @return [Hash]
     def attributes
       ATTRIBUTES_NAMES.inject({}) do |attribs, attrib_name|
         value = self.send(attrib_name)
@@ -67,6 +80,5 @@ module Retentiongrid
         attribs
       end
     end
-
   end
 end

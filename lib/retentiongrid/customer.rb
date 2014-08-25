@@ -1,7 +1,17 @@
 module Retentiongrid
+
+  # Retentiongrid Customer
+  #
+  # To create a new Retentiongrid::Customer object:
+  #   customer = Retentiongrid::Customer.new(customer_id: 'C123', full_name: 'Chris Tucker').save
+  #
+  # To get a order from the API:
+  #   customer = Retentiongrid::Customer.find('C123')
+  #
   class Customer
     include ActiveModel::Validations
 
+    # The set of attributes defined by the API documentation
     ATTRIBUTES_NAMES = [ :customer_id, :full_name, :first_name, :email,
                          :country, :state, :city, :postal_code, :tags,
                          :accepts_email_marketing ].freeze
@@ -32,25 +42,29 @@ module Retentiongrid
       end
     end
 
-
-
+    # Create or update a customer with given id
+    # @return [Boolean] successfully created or updated?
     def save
+      !!(save!) rescue false
+    end
+
+    # Create or update a customer with given id
+    # @return [Customer] if successfully created or updated
+    # @raise [Httparty::Error] for all sorts of HTTP statuses.
+    def save!
       result = Api.post("/customers/#{customer_id}", body: attributes.to_json)
       Customer.new(result.parsed_response["rg_customer"])
     end
 
-    def save!
-      !!save
-    end
-
-
     # Delete this customer at retention grid
-    # @param [Fixnum] customer_id the customer id to be deleted
+    # @return [Boolean] successfully deleted?
     def destroy
       Api.delete("/customers/#{customer_id}")
       true
     end
 
+    # Return all attributes as a hash
+    # @return [Hash]
     def attributes
       ATTRIBUTES_NAMES.inject({}) do |attribs, attrib_name|
         value = self.send(attrib_name)
@@ -58,6 +72,5 @@ module Retentiongrid
         attribs
       end
     end
-
   end
 end
