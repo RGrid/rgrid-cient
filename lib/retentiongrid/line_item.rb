@@ -1,5 +1,5 @@
 module Retentiongrid
-  class LineItem
+  class LineItem < Resource
 
     def initialize
       raise NotImplemented.new

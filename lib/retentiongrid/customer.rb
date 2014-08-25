@@ -8,7 +8,7 @@ module Retentiongrid
   # To get a order from the API:
   #   customer = Retentiongrid::Customer.find('C123')
   #
-  class Customer
+  class Customer < Resource
     include ActiveModel::Validations
 
     # The set of attributes defined by the API documentation
@@ -21,12 +21,6 @@ module Retentiongrid
     end
 
     validates :customer_id, :full_name, presence: true
-
-    def initialize(attribs={})
-      attribs.each do |attrib, value|
-        self.send("#{attrib}=", value)
-      end
-    end
 
     # API Stuff here
 
@@ -61,16 +55,6 @@ module Retentiongrid
     def destroy
       Api.delete("/customers/#{customer_id}")
       true
-    end
-
-    # Return all attributes as a hash
-    # @return [Hash]
-    def attributes
-      ATTRIBUTES_NAMES.inject({}) do |attribs, attrib_name|
-        value = self.send(attrib_name)
-        attribs[attrib_name] = value unless value.nil?
-        attribs
-      end
     end
   end
 end
