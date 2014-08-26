@@ -1,4 +1,4 @@
-# Retention::Grid
+# Retentiongrid
 
 [![Gem Version](https://fury-badge.herokuapp.com/rb/retentiongrid.png)](http://badge.fury.io/rb/retentiongrid)
 [![Build Status](https://travis-ci.org/christoph-buente/retentiongrid.png?branch=master)](https://travis-ci.org/christoph-buente/retentiongrid)
@@ -18,7 +18,7 @@ Add this line to your application's Gemfile:
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
 Or install it yourself as:
 
