@@ -39,12 +39,6 @@ module Retentiongrid
     end
 
     # Create or update a customer with given id
-    # @return [Boolean] successfully created or updated?
-    def save
-      !!(save!) rescue false
-    end
-
-    # Create or update a customer with given id
     # @return [Customer] if successfully created or updated
     # @raise [Httparty::Error] for all sorts of HTTP statuses.
     def save!

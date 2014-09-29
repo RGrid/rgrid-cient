@@ -22,6 +22,12 @@ module Retentiongrid
       end
     end
 
+    # Create or update a product with given id
+    # @return [Boolean] successfully created or updated?
+    def save
+      !!(save!) rescue false
+    end
+
     # Return all attributes as a hash
     # @return [Hash]
     def attributes
