@@ -11,6 +11,8 @@ module Retentiongrid
   class Customer < Resource
     include ActiveModel::Validations
 
+    BASE_PATH = '/customers'
+
     # The set of attributes defined by the API documentation
     ATTRIBUTES_NAMES = [ :customer_id, :full_name, :first_name, :email,
                          :country, :state, :city, :postal_code, :tags,
@@ -29,7 +31,7 @@ module Retentiongrid
     # @return [Customer] if found any
     def self.find(customer_id)
       begin
-        result = Api.get("/customers/#{customer_id}")
+        result = Api.get("#{BASE_PATH}/#{customer_id}")
         new(result.parsed_response["rg_customer"])
       rescue NotFound
         nil
@@ -46,14 +48,14 @@ module Retentiongrid
     # @return [Customer] if successfully created or updated
     # @raise [Httparty::Error] for all sorts of HTTP statuses.
     def save!
-      result = Api.post("/customers/#{customer_id}", body: attributes.to_json)
+      result = Api.post("#{BASE_PATH}/#{customer_id}", body: attributes.to_json)
       Customer.new(result.parsed_response["rg_customer"])
     end
 
     # Delete this customer at retention grid
     # @return [Boolean] successfully deleted?
     def destroy
-      Api.delete("/customers/#{customer_id}")
+      Api.delete("#{BASE_PATH}/#{customer_id}")
       true
     end
   end

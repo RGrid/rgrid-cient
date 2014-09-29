@@ -10,6 +10,8 @@ module Retentiongrid
   class Order < Resource
     include ActiveModel::Validations
 
+    BASE_PATH = '/orders'
+
     # The set of attributes defined by the API documentation
     ATTRIBUTES_NAMES = [  :order_id, :customer_id, :status, :total_price, :total_discounts,
                           :currency, :canceled_shipped, :canceled_shop_fault, :order_created_at
@@ -42,7 +44,7 @@ module Retentiongrid
     # @return [Order] if found any
     def self.find(order_id)
       begin
-        result = Api.get("/orders/#{order_id}")
+        result = Api.get("#{BASE_PATH}/#{order_id}")
         new(result.parsed_response["rg_order"])
       rescue NotFound
         nil
@@ -59,14 +61,14 @@ module Retentiongrid
     # @return [Order] if successfully created or updated
     # @raise [Httparty::Error] for all sorts of HTTP statuses.
     def save!
-      result = Api.post("/orders/#{order_id}", { body: attributes.to_json })
+      result = Api.post("#{BASE_PATH}/#{order_id}", { body: attributes.to_json })
       Order.new(result.parsed_response["rg_order"])
     end
 
     # Delete this order at retention grid
     # @return [Boolean] successfully deleted?
     def destroy
-      Api.delete("/orders/#{order_id}")
+      Api.delete("#{BASE_PATH}/#{order_id}")
       true
     end
   end

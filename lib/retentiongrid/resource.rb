@@ -12,6 +12,10 @@ module Retentiongrid
       attr_accessor attrib
     end
 
+    def self.base_path
+      '/'
+    end
+
     def initialize(attribs={})
       attribs.each do |attrib, value|
         self.send("#{attrib}=", value)
