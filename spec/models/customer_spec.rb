@@ -12,7 +12,7 @@ RSpec.describe Customer do
     it { expect(subject).to be_valid }
   end
 
-  it "makes sure the order id is populated" do
+  it "makes sure the customer id is populated" do
     expect(subject.customer_id).to_not eql nil
   end
 
