@@ -6,6 +6,8 @@ require 'retentiongrid/version'
 Gem::Specification.new do |spec|
   spec.name          = "retentiongrid"
   spec.version       = Retentiongrid::VERSION
+  spec.required_ruby_version = '>=1.9.0'
+
   spec.authors       = ["Christoph Bünte"]
   spec.email         = ["info@christophbuente.de"]
   spec.summary       = "A ruby client for retentiongrid.com API."
