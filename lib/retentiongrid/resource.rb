@@ -31,7 +31,7 @@ module Retentiongrid
     # Return all attributes as a hash
     # @return [Hash]
     def attributes
-      ATTRIBUTES_NAMES.inject({}) do |attribs, attrib_name|
+      self.class::ATTRIBUTES_NAMES.inject({}) do |attribs, attrib_name|
         value = self.send(attrib_name)
         attribs[attrib_name] = value unless value.nil?
         attribs
