@@ -8,7 +8,6 @@ module Retentiongrid
   #   order = Retentiongrid::Order.find('A123')
   #
   class Order < Resource
-    include ActiveModel::Validations
 
     BASE_PATH = '/orders'
 
@@ -22,8 +21,6 @@ module Retentiongrid
     end
 
     attr_accessor :customer
-
-    validates :order_id, :customer_id, :currency, :total_price, :order_created_at, presence: true
 
     def initialize(attribs={})
       super

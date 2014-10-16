@@ -9,7 +9,6 @@ module Retentiongrid
   #   customer = Retentiongrid::Customer.find('C123')
   #
   class Customer < Resource
-    include ActiveModel::Validations
 
     BASE_PATH = '/customers'
 
@@ -21,8 +20,6 @@ module Retentiongrid
     ATTRIBUTES_NAMES.each do |attrib|
       attr_accessor attrib
     end
-
-    validates :customer_id, :full_name, presence: true
 
     # API Stuff here
 

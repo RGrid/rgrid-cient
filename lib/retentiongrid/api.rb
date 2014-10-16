@@ -34,7 +34,8 @@ module Retentiongrid
       def get_with_response_check(*args)
         check_response_codes(get_without_response_check(*args))
       end
-      alias_method_chain :get, :response_check
+      alias_method :get_without_response_check, :get
+      alias_method :get, :get_with_response_check
 
       # Do a HTTP POST requests with the given arguments
       # and then check for the response code.
@@ -46,7 +47,8 @@ module Retentiongrid
       def post_with_response_check(*args)
         check_response_codes(post_without_response_check(*args))
       end
-      alias_method_chain :post, :response_check
+      alias_method :post_without_response_check, :post
+      alias_method :post, :post_with_response_check
 
       # Do a HTTP DELETE requests with the given arguments
       # and then check for the response code.
@@ -58,7 +60,8 @@ module Retentiongrid
       def delete_with_response_check(*args)
         check_response_codes(delete_without_response_check(*args))
       end
-      alias_method_chain :delete, :response_check
+      alias_method :delete_without_response_check, :delete
+      alias_method :delete, :delete_with_response_check
 
     end
 

@@ -4,7 +4,6 @@ module Retentiongrid
   # Base class for all API resources.
   #
   class Resource
-    include ActiveModel::Validations
 
     ATTRIBUTES_NAMES = []
 

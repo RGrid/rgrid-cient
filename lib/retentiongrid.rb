@@ -1,4 +1,3 @@
-require 'active_model'
 require 'retentiongrid/version'
 require 'retentiongrid/resource'
 require 'retentiongrid/api'

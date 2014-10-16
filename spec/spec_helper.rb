@@ -1,7 +1,6 @@
 require 'webmock/rspec'
 require 'factory_girl'
 require 'retentiongrid'
-require 'shoulda/matchers'
 
 require 'rspec'
 require 'coveralls'
