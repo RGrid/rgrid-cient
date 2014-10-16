@@ -1,7 +1,7 @@
 module Retentiongrid
   class Product < Resource
 
-    BASE_PATH = '/products'
+    BASE_PATH = '/products'.freeze
 
     # The set of attributes defined by the API documentation
     ATTRIBUTES_NAMES = [  :product_id, :available, :metadata,

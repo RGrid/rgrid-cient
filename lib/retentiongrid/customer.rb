@@ -10,7 +10,7 @@ module Retentiongrid
   #
   class Customer < Resource
 
-    BASE_PATH = '/customers'
+    BASE_PATH = '/customers'.freeze
 
     # The set of attributes defined by the API documentation
     ATTRIBUTES_NAMES = [ :customer_id, :full_name, :first_name, :email,

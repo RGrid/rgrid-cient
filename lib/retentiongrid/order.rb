@@ -9,7 +9,7 @@ module Retentiongrid
   #
   class Order < Resource
 
-    BASE_PATH = '/orders'
+    BASE_PATH = '/orders'.freeze
 
     # The set of attributes defined by the API documentation
     ATTRIBUTES_NAMES = [  :order_id, :customer_id, :status, :total_price, :total_discounts,
