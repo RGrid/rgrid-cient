@@ -83,14 +83,6 @@ RSpec.describe Product do
 
   context '#delete' do
 
-    let :product do
-      FactoryGirl.build(:product)
-    end
-
-    subject do
-      FactoryGirl.build(:product)
-    end
-
     before :each do
       stub_request(:delete, "http://retentiongrid.apiary-mock.com/products/#{subject.product_id}").to_return(:status => 204, :body => '')
     end
