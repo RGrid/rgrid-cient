@@ -25,7 +25,7 @@ RSpec.describe LineItem do
   context 'associations' do
 
     it "sets up order association" do
-      expect(subject.rg_order_id).to eql order.order_id
+      expect(subject.order_id).to eql order.order_id
     end
   end
 

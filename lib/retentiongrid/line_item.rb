@@ -4,7 +4,7 @@ module Retentiongrid
     BASE_PATH="/line_items".freeze
 
     # The set of attributes defined by the API documentation
-    ATTRIBUTES_NAMES = [  :line_item_id, :rg_order_id, :price, :quantity,
+    ATTRIBUTES_NAMES = [  :line_item_id, :order_id, :price, :quantity,
                           :product_id, :variant_id, :sku, :name
                        ].freeze
 
@@ -19,7 +19,7 @@ module Retentiongrid
     # relations
 
     def order=(order)
-      @rg_order_id = order.order_id
+      @order_id = order.order_id
       @order = order
     end
 
