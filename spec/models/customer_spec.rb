@@ -7,7 +7,7 @@ RSpec.describe Customer do
   end
 
   it "sets the base path correctly" do
-    expect(Customer::BASE_PATH).to eql '/customers'
+    expect(subject.class::BASE_PATH).to eql '/customers'
   end
 
   it "makes sure the customer id is populated" do

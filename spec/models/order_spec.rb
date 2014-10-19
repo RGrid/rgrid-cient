@@ -11,7 +11,7 @@ RSpec.describe Order do
   end
 
   it "sets the base path correctly" do
-    expect(Order::BASE_PATH).to eql '/orders'
+    expect(subject.class::BASE_PATH).to eql '/orders'
   end
 
   it "makes sure the order id is populated" do

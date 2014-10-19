@@ -7,7 +7,7 @@ RSpec.describe Product do
   end
 
   it "sets the base path correctly" do
-    expect(Product::BASE_PATH).to eql '/products'
+    expect(subject.class::BASE_PATH).to eql '/products'
   end
 
   it "makes sure the product id is populated" do
