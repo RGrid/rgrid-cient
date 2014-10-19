@@ -31,7 +31,7 @@ module Retentiongrid
     def self.find(line_item_id)
       begin
         result = Api.get("#{BASE_PATH}/#{line_item_id}")
-        new(result.parsed_response["rg_line_item"])
+        new(result.parsed_response["rg_item"])
       rescue NotFound
         nil
       end
@@ -42,7 +42,7 @@ module Retentiongrid
     # @raise [Httparty::Error] for all sorts of HTTP statuses.
     def save!
       result = Api.post("#{BASE_PATH}/#{line_item_id}", body: attributes.to_json)
-      new(result.parsed_response["rg_line_item"])
+      new(result.parsed_response["rg_item"])
     end
 
     # Delete this line item at retention grid
