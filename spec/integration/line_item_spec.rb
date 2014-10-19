@@ -17,7 +17,7 @@ RSpec.describe LineItem do
         "product_id": 25,
         "variant_id": null,
         "sku": "",
-        "name": "Protestsülze"
+        "name": "Protestsuelze"
       }
     }
     EOF
