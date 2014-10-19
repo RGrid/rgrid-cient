@@ -24,7 +24,9 @@ module Retentiongrid
 
     def initialize(attribs={})
       super
-      @order_created_at = Time.parse(order_created_at) unless order_created_at.nil?
+      if order_created_at.class == String && !order_created_at.nil?
+        @order_created_at = Time.parse(order_created_at)
+      end
     end
 
     # relations
