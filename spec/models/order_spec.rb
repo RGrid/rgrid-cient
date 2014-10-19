@@ -18,4 +18,12 @@ RSpec.describe Order do
     expect(subject.order_id).not_to eql nil
   end
 
+  context 'associations' do
+
+    it "sets up customer association" do
+      expect(subject.customer_id).to eql customer.customer_id
+    end
+  end
+
+
 end
