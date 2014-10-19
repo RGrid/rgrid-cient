@@ -26,9 +26,28 @@ Or install it yourself as:
 
 ## Usage
 
+### set you API key
+
     require 'retentiongrid'
     Retentiongrid::Api.api_key = "your_api_key"
+
+### Read from retentiongrid
+
     order = Retentiongrid::Order.find(1234)
+
+### Write to retentiongrid
+
+    order = Retentiongrid::Order.new({
+      status:           'ok',
+      order_id:         'R123',
+      customer_id:      'C321',
+      currency:         'EUR',
+      total_price:      35.99,
+      total_discounts:  0.0,
+      order_created_at: Time.now,
+    })
+    order.save
+
 
 ## Contributing
 
