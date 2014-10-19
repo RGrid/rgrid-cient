@@ -16,10 +16,13 @@ module Retentiongrid
 
     def initialize(attribs={})
       super
-      @product_created_at = Time.parse(product_created_at) unless product_created_at.nil?
-      @product_updated_at = Time.parse(product_updated_at) unless product_updated_at.nil?
+      if product_created_at.class == "String" && !product_created_at.nil?
+        @product_created_at = Time.parse(product_created_at)
+      end
+      if @product_updated_at.class == "String" && !product_updated_at.nil?
+        @product_updated_at = Time.parse(product_updated_at)
+      end
     end
-
 
     # API Stuff here
 
