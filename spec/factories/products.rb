@@ -15,5 +15,11 @@ FactoryGirl.define do
     image_url 'http://example.com/images/1.png'
     product_updated_at { Time.now - 86400 }
     product_created_at { Time.now - 161024 }
+    meta { Hash.new(
+      type: "red",
+      region: "napa valley",
+      country: "USA",
+      varietal:  "pinot noir"
+    )}
   end
 end
