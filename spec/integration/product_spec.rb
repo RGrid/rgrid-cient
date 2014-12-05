@@ -36,6 +36,13 @@ RSpec.describe Product do
       Product.find('123')
     end
 
+    it "should retry upon 429 TooManyRequests" do
+      stub_request(:get, "http://retentiongrid.apiary-mock.com/products/123").
+        to_return(:status => 429, :body => '429 Too Many Requests (5 request/s on average allowed. Burst of max 10/s require you to wait 1 second.)', :headers => {'Content-Type' => 'text/plain'}).then.
+        to_return(:status => 200, :body => valid_order, :headers => {'Content-Type' => 'application/json'})
+      Product.find('123')
+    end
+
     it "should build a Product from API response" do
       expect(subject.class).to eql Retentiongrid::Product
     end

@@ -30,6 +30,9 @@ module Retentiongrid
   # The request was well-formed but was unable to be followed due to semantic errors.
   class UnprocessableEntity < HTTParty::Error; end # 422
 
+  # The request was ok, but you sent too many after each other
+  class TooManyRequests < HTTParty::Error; end # 429
+
   # Unspecified API server error.
   class ServerError < HTTParty::Error; end # 500
 

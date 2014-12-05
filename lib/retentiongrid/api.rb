@@ -32,7 +32,12 @@ module Retentiongrid
       # @raise [Retentiongrid::ServerError] (500) in case something went wrong on the retentiongrid server
       # @return [Httparty::Response]
       def get_with_response_check(*args)
-        check_response_codes(get_without_response_check(*args))
+        begin
+          check_response_codes(get_without_response_check(*args))
+        rescue TooManyRequests => e
+          sleep 1
+          retry
+        end
       end
       alias_method :get_without_response_check, :get
       alias_method :get, :get_with_response_check
@@ -45,7 +50,12 @@ module Retentiongrid
       # @raise [Retentiongrid::ServerError] (500) in case something went wrong on the retentiongrid server
       # @return [Httparty::Response]
       def post_with_response_check(*args)
-        check_response_codes(post_without_response_check(*args))
+        begin
+          check_response_codes(post_without_response_check(*args))
+        rescue TooManyRequests => e
+          sleep 1
+          retry
+        end
       end
       alias_method :post_without_response_check, :post
       alias_method :post, :post_with_response_check
@@ -58,7 +68,12 @@ module Retentiongrid
       # @raise [Retentiongrid::ServerError] (500) in case something went wrong on the retentiongrid server
       # @return [Httparty::Response]
       def delete_with_response_check(*args)
-        check_response_codes(delete_without_response_check(*args))
+        begin
+          check_response_codes(delete_without_response_check(*args))
+        rescue TooManyRequests => e
+          sleep 1
+          retry
+        end
       end
       alias_method :delete_without_response_check, :delete
       alias_method :delete, :delete_with_response_check
@@ -78,6 +93,7 @@ module Retentiongrid
       when 405 then raise MethodNotAllowed.new(body)
       when 410 then raise Gone.new(body)
       when 422 then raise UnprocessableEntity.new(body)
+      when 429 then raise TooManyRequests.new(body)
       when 500 then raise ServerError, 'Internal Server Error'
       when 503 then raise Unavailable, 'Service Unavailable'
       else raise "Unknown response code: #{response.code}"
