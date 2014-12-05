@@ -7,7 +7,7 @@ module Retentiongrid
     ATTRIBUTES_NAMES = [  :product_id, :available, :metadata,
                           :title, :image_url, :currency, :price,
                           :sale_price, :cost_price, :product_url,
-                          :product_created_at, :product_updated_at, :metadata
+                          :product_created_at, :product_updated_at
                        ].freeze
 
     ATTRIBUTES_NAMES.each do |attrib|
