@@ -1,10 +1,10 @@
 # Retentiongrid
 
 [![Gem Version](https://fury-badge.herokuapp.com/rb/retentiongrid.png)](http://badge.fury.io/rb/retentiongrid)
-[![Build Status](https://travis-ci.org/christoph-buente/retentiongrid.png?branch=master)](https://travis-ci.org/christoph-buente/retentiongrid)
-[![Coverage Status](https://coveralls.io/repos/christoph-buente/retentiongrid/badge.png)](https://coveralls.io/r/christoph-buente/retentiongrid)
-[![Code Climate](https://codeclimate.com/github/christoph-buente/retentiongrid.png)](https://codeclimate.com/github/christoph-buente/retentiongrid)
-[![License](http://img.shields.io/license/MIT.png?color=green) ](https://github.com/christoph-buente/retentiongrid/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/RGrid/rgrid-client.png?branch=master)](https://travis-ci.org/RGrid/rgrid-client)
+[![Coverage Status](https://coveralls.io/repos/RGrid/rgrid-client/badge.png)](https://coveralls.io/r/RGrid/rgrid-client)
+[![Code Climate](https://codeclimate.com/github/RGrid/rgrid-client.png)](https://codeclimate.com/github/RGrid/rgrid-client)
+[![License](http://img.shields.io/license/MIT.png?color=green) ](https://github.com/RGrid/rgrid-client/blob/master/LICENSE)
 
 
 A ruby client for retentiongrid.com API
